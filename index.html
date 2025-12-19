@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wind Lab 3D</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="ui">
+    <div class="panel">
+      <header>
+        <h1>Wind Lab 3D</h1>
+        <span class="subtitle">Cinematic wind playground</span>
+      </header>
+
+      <section class="group">
+        <div class="field">
+          <label for="windSpeed">Wind speed (m/s)</label>
+          <input type="range" id="windSpeed" min="0" max="40" step="0.5" value="12" />
+          <span class="value" data-for="windSpeed">12</span>
+        </div>
+        <div class="field">
+          <label for="windDirection">Direction (°)</label>
+          <input type="range" id="windDirection" min="0" max="360" step="1" value="45" />
+          <span class="value" data-for="windDirection">45</span>
+        </div>
+        <div class="field">
+          <label for="gustiness">Gustiness</label>
+          <input type="range" id="gustiness" min="0" max="1" step="0.01" value="0.35" />
+          <span class="value" data-for="gustiness">0.35</span>
+        </div>
+        <div class="field">
+          <label for="turbulence">Turbulence</label>
+          <input type="range" id="turbulence" min="0" max="1" step="0.01" value="0.45" />
+          <span class="value" data-for="turbulence">0.45</span>
+        </div>
+        <div class="field">
+          <label for="rho">Air density</label>
+          <select id="rho">
+            <option value="1.225">Sea level (1.225 kg/m³)</option>
+            <option value="1.112">Highland (1.112 kg/m³)</option>
+            <option value="0.909">Thin air (0.909 kg/m³)</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="roughness">Ground roughness</label>
+          <input type="range" id="roughness" min="0" max="1" step="0.02" value="0.42" />
+          <span class="value" data-for="roughness">0.42</span>
+        </div>
+        <div class="field">
+          <label for="weather">Weather preset</label>
+          <select id="weather">
+            <option value="clear">Clear</option>
+            <option value="rain">Rain</option>
+            <option value="snow">Snow</option>
+            <option value="storm">Storm</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="group buttons">
+        <div class="field small">
+          <label>Wind presets</label>
+          <div class="row">
+            <button data-preset="breeze">Breeze</button>
+            <button data-preset="strong">Strong</button>
+            <button data-preset="gale">Gale</button>
+            <button data-preset="storm">Storm</button>
+          </div>
+        </div>
+        <div class="row">
+          <button id="resetScene">Reset scene</button>
+          <button id="toggleRun">Pause</button>
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="field">
+          <label for="objectType">Add object</label>
+          <div class="row">
+            <select id="objectType">
+              <option value="paper">Paper sheet</option>
+              <option value="umbrella">Umbrella</option>
+              <option value="cone">Traffic cone</option>
+              <option value="bicycle">Bicycle</option>
+              <option value="bag">Plastic bag</option>
+              <option value="ball">Ball</option>
+              <option value="human">Human silhouette</option>
+              <option value="lightbox">Light box</option>
+            </select>
+            <button id="addObject">Add</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="group toggles">
+        <label><input type="checkbox" id="showForces" checked /> Show forces</label>
+        <label><input type="checkbox" id="showWind" checked /> Show wind particles</label>
+        <label><input type="checkbox" id="highQuality" checked /> High quality</label>
+      </section>
+
+      <section class="group info">
+        <div id="selectedInfo">Select an object to inspect its forces.</div>
+        <label class="anchor-toggle"><input type="checkbox" id="anchorSelected" /> Anchor selected object</label>
+        <div id="fps">FPS: --</div>
+      </section>
+    </div>
+  </div>
+
+  <canvas id="scene"></canvas>
+  <div id="tooltip"></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
